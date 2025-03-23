@@ -7,15 +7,3 @@ services:
     ports:
       - "5000:5000"
     container_name: flask-api
-  nextjs-app:
-    build:
-      context: ./client  # Changed to ./client
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      - NEXT_PUBLIC_HEALTH_CHECK_URL=http://flask-api:5000/health-check
-      - NEXT_PUBLIC_DOC_ANALYSIS_URL=http://flask-api:5000/analyze
-    depends_on:
-      - flask-api
-    container_name: nextjs-app
